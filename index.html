@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ВыгодаЧек — скидки, акции и промокоды магазинов</title>
+<meta name="description" content="ВыгодаЧек — подборка актуальных акций, скидок и промокодов популярных интернет-магазинов и онлайн-школ. Экономьте на покупках одежды, товаров для спорта, продуктов, косметики и обучения.">
+<!-- Сюда потом вставить мета-тег подтверждения от Адмитада -->
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#fff; --ink:#1c1d29; --muted:#6b6e85;
+    --accent:#ff5a36; --accent2:#2f6bff; --line:#e7e8f0; --ok:#18a957;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.5px;text-decoration:none}
+  .logo b{color:var(--accent)}
+  .nav ul{display:flex;gap:22px;list-style:none;font-size:15px}
+  .nav ul a{text-decoration:none;color:var(--muted)}
+  .nav ul a:hover{color:var(--ink)}
+  .hero{padding:56px 0 40px;text-align:center}
+  .hero h1{font-size:clamp(28px,5vw,46px);line-height:1.15;letter-spacing:-1px;max-width:760px;margin:0 auto 14px}
+  .hero h1 span{color:var(--accent)}
+  .hero p{color:var(--muted);font-size:18px;max-width:620px;margin:0 auto 26px}
+  .search{max-width:520px;margin:0 auto;display:flex;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(30,30,60,.06)}
+  .search input{flex:1;border:0;padding:15px 18px;font-size:16px;outline:none}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 8px}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-size:14px;cursor:pointer;color:var(--muted)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  h2{font-size:28px;letter-spacing:-.5px;margin-bottom:6px}
+  .sub{color:var(--muted);margin-bottom:24px}
+  section{padding:36px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(30,30,60,.08)}
+  .badge{align-self:flex-start;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#fff1ec;color:var(--accent)}
+  .card h3{font-size:20px}
+  .card p{color:var(--muted);font-size:14px;flex:1}
+  .perks{list-style:none;font-size:14px;display:grid;gap:4px}
+  .perks li::before{content:"✓ ";color:var(--ok);font-weight:700}
+  .btn{display:block;text-align:center;text-decoration:none;font-weight:600;padding:12px;border-radius:12px;background:var(--accent);color:#fff;border:0;cursor:pointer;font-size:15px}
+  .btn:hover{filter:brightness(.95)}
+  .btn.soon{background:#eceef5;color:var(--muted);cursor:default}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .step .n{width:36px;height:36px;border-radius:10px;background:var(--accent2);color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:12px}
+  .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .tip{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .tip h3{margin-bottom:8px}
+  .tip p{color:var(--muted);font-size:15px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--muted);margin-top:10px}
+  footer{border-top:1px solid var(--line);background:var(--card);padding:30px 0;margin-top:30px;font-size:14px;color:var(--muted)}
+  footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+  .empty{display:none;text-align:center;color:var(--muted);padding:30px}
+  @media(max-width:640px){.nav ul{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">Выгода<b>Чек</b></a>
+    <ul>
+      <li><a href="#shops">Магазины</a></li>
+      <li><a href="#how">Как экономить</a></li>
+      <li><a href="#tips">Советы</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <h1>Покупайте <span>выгоднее</span> в любимых магазинах</h1>
+  <p>Собираем актуальные акции, скидки и промокоды интернет-магазинов и онлайн-школ в одном месте. Без регистрации и бесплатно.</p>
+  <div class="search"><input id="q" type="search" placeholder="Найти магазин, например «Спортмастер»"></div>
+  <div class="chips" id="chips">
+    <button class="chip on" data-cat="all">Все</button>
+    <button class="chip" data-cat="shop">Маркетплейсы</button>
+    <button class="chip" data-cat="sport">Спорт</button>
+    <button class="chip" data-cat="food">Продукты</button>
+    <button class="chip" data-cat="beauty">Красота</button>
+    <button class="chip" data-cat="edu">Обучение</button>
+  </div>
+</div>
+
+<section id="shops">
+  <div class="wrap">
+    <h2>Магазины и акции</h2>
+    <p class="sub">Переходите в магазин по кнопке: там актуальные скидки и действующие промокоды.</p>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">Ничего не нашли. Попробуйте другое название.</div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>Как сэкономить за 3 шага</h2>
+    <p class="sub">Всё просто: ничего устанавливать не нужно.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Выберите магазин</h3><p class="sub" style="margin:6px 0 0">Найдите нужный магазин в каталоге или через поиск.</p></div>
+      <div class="step"><div class="n">2</div><h3>Перейдите по кнопке</h3><p class="sub" style="margin:6px 0 0">Откроется сайт магазина со страницей акций.</p></div>
+      <div class="step"><div class="n">3</div><h3>Примените скидку</h3><p class="sub" style="margin:6px 0 0">Введите промокод в корзине или выберите товар по акции.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="wrap">
+    <h2>Советы, как платить меньше</h2>
+    <p class="sub">Простые приёмы, которые реально работают.</p>
+    <div class="tips">
+      <div class="tip"><h3>Ждите крупных распродаж</h3><p>11.11, «Чёрная пятница», новогодние и летние распродажи: в эти дни магазины дают самые большие скидки. Добавьте товары в избранное заранее и сравните цену.</p></div>
+      <div class="tip"><h3>Проверяйте условия промокода</h3><p>У промокода часто есть минимальная сумма заказа, срок действия и список товаров. Прочитайте условия, чтобы скидка точно сработала.</p></div>
+      <div class="tip"><h3>Скидка на первый заказ</h3><p>Многие магазины и онлайн-школы дают бонус новым покупателям. Если вы ещё не заказывали в магазине, ищите приветственные предложения.</p></div>
+      <div class="tip"><h3>Сравнивайте итоговую цену</h3><p>Учитывайте доставку: иногда товар дешевле, а с доставкой дороже. Смотрите итог в корзине перед оплатой.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Частые вопросы</h2>
+    <p class="sub">&nbsp;</p>
+    <details><summary>Это бесплатно?</summary><p>Да, пользоваться сайтом бесплатно. Цены в магазине для вас не меняются.</p></details>
+    <details><summary>Почему промокод не сработал?</summary><p>Проверьте срок действия, минимальную сумму заказа и подходящие категории товаров. Некоторые промокоды действуют только на первый заказ.</p></details>
+    <details><summary>Как вы зарабатываете?</summary><p>Часть ссылок на сайте партнёрские. Если вы совершаете покупку, магазин может выплатить нам небольшое вознаграждение. Для вас цена не меняется.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>© <span id="y"></span> ВыгодаЧек. Каталог акций и скидок интернет-магазинов.</div>
+    <div>Сайт содержит партнёрские ссылки. Реклама.</div>
+  </div>
+</footer>
+
+<script>
+/* ======= НАСТРОЙКА =======
+   После одобрения в Адмитаде вставь партнёрские ссылки в поле link.
+   Пока link пустой, кнопка показывает «Скоро». */
+const SHOPS = [
+  {name:"AliExpress", cat:"shop", badge:"Маркетплейс", text:"Миллионы товаров: электроника, одежда, товары для дома и авто.", perks:["Регулярные распродажи","Скидки новым покупателям"], link:""},
+  {name:"Спортмастер", cat:"sport", badge:"Спорт", text:"Одежда, обувь и инвентарь для спорта и активного отдыха.", perks:["Сезонные распродажи","Бонусная программа"], link:""},
+  {name:"Магнит", cat:"food", badge:"Продукты", text:"Доставка продуктов и товаров на каждый день.", perks:["Акции недели","Скидки на первый заказ"], link:""},
+  {name:"Randewoo", cat:"beauty", badge:"Красота", text:"Парфюмерия и косметика: оригинальные ароматы и уход.", perks:["Подарки к заказу","Распродажи брендов"], link:""},
+  {name:"Insperia", cat:"beauty", badge:"Красота", text:"Косметика и средства ухода от популярных брендов.", perks:["Акции и наборы","Скидки по праздникам"], link:""},
+  {name:"Фоксфорд", cat:"edu", badge:"Обучение", text:"Онлайн-школа для школьников: подготовка к ЕГЭ и ОГЭ, кружки.", perks:["Бесплатные пробные занятия","Скидки на курсы"], link:""},
+  {name:"Нетология", cat:"edu", badge:"Обучение", text:"Онлайн-курсы по профессиям: IT, маркетинг, дизайн, аналитика.", perks:["Скидки на программы","Рассрочка"], link:""}
+];
+
+const grid = document.getElementById('grid');
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const cat = document.querySelector('.chip.on').dataset.cat;
+  grid.innerHTML = '';
+  const list = SHOPS.filter(s => (cat==='all'||s.cat===cat) && s.name.toLowerCase().includes(q));
+  list.forEach(s=>{
+    const btn = s.link
+      ? `<a class="btn" href="${s.link}" target="_blank" rel="sponsored noopener">Перейти к акциям</a>`
+      : `<span class="btn soon">Скоро</span>`;
+    grid.insertAdjacentHTML('beforeend',`
+      <div class="card">
+        <span class="badge">${s.badge}</span>
+        <h3>${s.name}</h3>
+        <p>${s.text}</p>
+        <ul class="perks">${s.perks.map(p=>`<li>${p}</li>`).join('')}</ul>
+        ${btn}
+      </div>`);
+  });
+  document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+}
+document.getElementById('q').addEventListener('input', render);
+document.getElementById('chips').addEventListener('click', e=>{
+  if(!e.target.classList.contains('chip')) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  e.target.classList.add('on'); render();
+});
+document.getElementById('y').textContent = new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
